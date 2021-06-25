@@ -1,5 +1,6 @@
 package Driver;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -7,24 +8,20 @@ public class Driver {
 
     private static WebDriver instance;
 
-
-    public static void setnull() {
-        instance = null;
-    }
-
     private Driver() {
 
     }
 
     /**
      * Метод проверяет есть ли instance WebDriver, если нет, то создает новый
+     *
      * @return instance
      */
     public static synchronized WebDriver getInstance() {
         if (instance == null) {
 
-            System.setProperty("webdriver.chrome.driver", "C:\\chromedriver_win32\\chromedriver.exe");
-            instance =  new ChromeDriver();
+            WebDriverManager.chromedriver().setup();
+            instance = new ChromeDriver();
             instance.manage().window().maximize();
         }
         return instance;
@@ -33,7 +30,7 @@ public class Driver {
     /**
      * Метод который завершает работу браузера и сервисов
      */
-    public static void stopDriver () {
+    public static void stopDriver() {
         instance.quit();
         instance = null;
     }

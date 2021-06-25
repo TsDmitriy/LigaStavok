@@ -13,14 +13,16 @@ import java.io.IOException;
 
 public class ElektronikaPage extends MainPage {
 
-    public ElektronikaPage() throws IOException {
-        PageFactory.initElements(Driver.getInstance(),this);
+    public ElektronikaPage() {
+        PageFactory.initElements(Driver.getInstance(), this);
     }
+
     @FindBy(xpath = "//*[@class=\"_1Y6X2G3jjK\"]//*[text()='Телевизоры']")
     private WebElement tVSet;
 
     /**
      * Метод осуществляет переход на страницу раздела Телевизоры
+     *
      * @return
      */
     @Step("Переход на страницу \"Телевизоры\"")

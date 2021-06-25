@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.io.IOException;
 import java.util.Set;
 
 public class Helpers {
@@ -24,30 +23,6 @@ public class Helpers {
                 .withMessage("Элемент" + by + "не виден в DOM")
                 .until(ExpectedConditions.presenceOfElementLocated(by));
         return Driver.getInstance().findElement(by);
-    }
-
-    /**
-     * Метод проверяет, что элемент присутствует в DOM страницы, является видимым.
-     *
-     * @param webElement
-     */
-    public static WebElement invisibilityOf(WebElement webElement) {
-        new WebDriverWait(Driver.getInstance(), 15)
-                .withMessage("Элемент" + webElement + "не присутствует в DOM страницы, или является невидимым.")
-                .until(ExpectedConditions.invisibilityOf(webElement));
-        return webElement;
-    }
-
-    /**
-     * Метод проверет виден ли элемент в дом, если виден возвращает элемент
-     *
-     * @return найденный WebElement
-     */
-    public static void waitLoadPage() {
-        new WebDriverWait(Driver.getInstance(), 30)
-                .until(ExpectedConditions
-                        .jsReturnsValue("return document.readyState==\"complete\";"));
-
     }
 
     /**
