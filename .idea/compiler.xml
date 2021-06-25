@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Visa" />
+        <module name="ligaStavok" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Visa" target="11" />
+      <module name="ligaStavok" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

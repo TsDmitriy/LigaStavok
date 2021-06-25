@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Visa.iml" filepath="$PROJECT_DIR$/Visa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ligaStavok.iml" filepath="$PROJECT_DIR$/ligaStavok.iml" />
     </modules>
   </component>
 </project>
