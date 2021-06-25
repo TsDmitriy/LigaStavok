@@ -1,5 +1,5 @@
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 
 import java.io.IOException;
 
@@ -10,9 +10,10 @@ public class GoToMainPage {
      * Метод осуществляет переход на главную страницу приложения
      * @return новую страницу MainPage
      */
+
     public MainPage goToMainPage() throws IOException {
         Driver.getInstance().get(url);
-        Helpers.getScreenshotAs();
+        Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return new MainPage();
     }
 

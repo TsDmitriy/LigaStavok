@@ -1,10 +1,11 @@
-import org.openqa.selenium.*;
+import io.qameta.allure.Attachment;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.apache.commons.io.FileUtils;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Set;
 
@@ -85,17 +86,9 @@ public class Helpers {
         return newWindowHandle;
     }
 
-    public static void getScreenshotAs() throws IOException {
-        String pathScreenshot = "C:\\Screen\\" +(int) System.currentTimeMillis() +".png";
-        TakesScreenshot scrShot = ((TakesScreenshot) Driver.getInstance());
-        File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-        File DestFile = new File(pathScreenshot);
-        try {
-            FileUtils.copyFile(SrcFile, DestFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    @Attachment(value = "Снимок экрана", type = "image/png")
+    public static byte[] saveScreenshot(byte[] screenShot) {
+        return screenShot;
     }
 
 }

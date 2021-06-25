@@ -1,15 +1,16 @@
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 
 import java.io.IOException;
 
 public class TestBase {
-    @BeforeClass
+    @BeforeAll
     public static void startDriver() throws IOException {
         new GoToMainPage().goToMainPage();
 
     }
-    @AfterClass
+    @AfterAll
     public static void stopDriver() {
         Driver.stopDriver();
 

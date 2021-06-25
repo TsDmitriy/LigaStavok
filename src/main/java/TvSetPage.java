@@ -1,9 +1,8 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
 import java.util.Set;
@@ -25,13 +24,12 @@ public class TvSetPage extends MainPage {
 
     public TvSetPage selectMinPrise(String priseMin) throws IOException {
         priceFrom.sendKeys(priseMin);
-        Helpers.getScreenshotAs();
-        return this;
+        Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));        return this;
     }
 
     public TvSetPage selectBrendTVset(String brendTVset) throws IOException {
         Helpers.presenceOfElementLocatedAmdFindElement(By.xpath("//*[@class=\"NVoaOvqe58\" and text()='"+ brendTVset +"']")).click();
-        Helpers.getScreenshotAs();
+        Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
     }
     public FirstTvSet choiseFirstTvSet() throws IOException {
@@ -41,7 +39,7 @@ public class TvSetPage extends MainPage {
         firstTV.click();
         Set<String> newWindowsSet = Helpers.getWindowHandles();
         Driver.getInstance().switchTo().window(Helpers.getNewWindowHandles(oldWindowsSet,newWindowsSet));
-        Helpers.getScreenshotAs();
+        Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return new FirstTvSet();
 
     }

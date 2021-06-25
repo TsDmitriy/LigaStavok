@@ -1,3 +1,5 @@
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -18,7 +20,7 @@ public class ElektronikaPage extends MainPage {
      */
     public TvSetPage goToTvSetPage() throws IOException {
         tVSet.click();
-        Helpers.getScreenshotAs();
+        Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return new TvSetPage();
     }
 
