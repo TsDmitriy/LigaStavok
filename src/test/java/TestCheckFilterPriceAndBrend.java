@@ -1,6 +1,8 @@
+import Pages.MainPage;
+
 import java.io.IOException;
 
-public class TestFilterPriceAndBrend extends TestBase{
+public class TestCheckFilterPriceAndBrend extends TestBase{
 
     @org.junit.jupiter.api.Test
 

@@ -1,3 +1,6 @@
+package utils;
+
+import Driver.Driver;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +19,7 @@ public class Helpers {
      * @param by путь до элемента в DOM
      * @return найденный WebElement
      */
-    public static WebElement presenceOfElementLocatedAmdFindElement(By by) throws IOException {
+    public static WebElement presenceOfElementLocatedAmdFindElement(By by)  {
         new WebDriverWait(Driver.getInstance(), 15)
                 .withMessage("Элемент" + by + "не виден в DOM")
                 .until(ExpectedConditions.presenceOfElementLocated(by));
