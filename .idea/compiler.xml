@@ -9,10 +9,8 @@
         <module name="LigaStavok" />
       </profile>
     </annotationProcessing>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="LigaStavok" options="" />
-    </option>
+    <bytecodeTargetLevel>
+      <module name="LigaStavok" target="11" />
+    </bytecodeTargetLevel>
   </component>
 </project>

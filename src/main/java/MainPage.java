@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -17,6 +18,7 @@ public class MainPage {
      * Метод осуществляет переход на страницу раздела Электроника
      * @return ElektronikaPage
      */
+//    @Step("Переход на страницу Электроника")
     public ElektronikaPage goToElektronikaPage() throws IOException {
         elektronika.click();
         Helpers.getScreenshotAs();

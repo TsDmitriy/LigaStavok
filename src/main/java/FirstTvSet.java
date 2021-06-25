@@ -36,10 +36,9 @@ public class FirstTvSet extends MainPage{
     public void checkBrendTvEqual (String...brends) {
         ArrayList<String> listBrend = new ArrayList<>(Arrays.asList(brends));
         String descriptionTV = brendTV.getText();
-//        Assert.assertTrue("Бренд телевизора не соотвествует брендам заданным в фильтре:" + brends,listBrend.stream().anyMatch(x->x.contains(brends)));
         for (String s:listBrend) {
             if (!descriptionTV.contains(s)) {
-                throw new IllegalArgumentException("Бренд телевизора не соотвествует брендам заданным в фильтре:" + brends);
+                throw new IllegalArgumentException("Бренд телевизора не соотвествует брендам заданным в фильтре:" + String.join(",", brends));
             }
         }
     }

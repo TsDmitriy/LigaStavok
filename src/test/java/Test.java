@@ -3,6 +3,7 @@ import java.io.IOException;
 public class Test extends TestBase{
 
     @org.junit.Test
+
     public void test() throws IOException {
        new MainPage()
                 .goToElektronikaPage();
