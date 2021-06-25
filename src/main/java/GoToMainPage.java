@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -10,7 +11,7 @@ public class GoToMainPage {
      * Метод осуществляет переход на главную страницу приложения
      * @return новую страницу MainPage
      */
-
+    @Step("Переход на страницу \"market.yandex.ru\"")
     public MainPage goToMainPage() throws IOException {
         Driver.getInstance().get(url);
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));

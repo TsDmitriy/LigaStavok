@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -21,17 +22,18 @@ public class TvSetPage extends MainPage {
 
     public TvSetPage() throws IOException {
     }
-
+    @Step("Пользователь вводит сумму в поле Цена, ₽ от")
     public TvSetPage selectMinPrise(String priseMin) throws IOException {
         priceFrom.sendKeys(priseMin);
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));        return this;
     }
-
+    @Step("Пользователь выбирает бренд телевизора")
     public TvSetPage selectBrendTVset(String brendTVset) throws IOException {
         Helpers.presenceOfElementLocatedAmdFindElement(By.xpath("//*[@class=\"NVoaOvqe58\" and text()='"+ brendTVset +"']")).click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
     }
+    @Step("Пользователь выбирает первый найденный телевизор")
     public FirstTvSet choiseFirstTvSet() throws IOException {
         Set<String> oldWindowsSet = Helpers.getWindowHandles();
         WebElement formDisaible = Helpers.presenceOfElementLocatedAmdFindElement(form);

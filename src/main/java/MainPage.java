@@ -20,7 +20,7 @@ public class MainPage {
      * Метод осуществляет переход на страницу раздела Электроника
      * @return ElektronikaPage
      */
-    @Step("Переход на страницу Электроника")
+    @Step("Переход на страницу \"Электроника\"")
     public ElektronikaPage goToElektronikaPage() throws IOException {
         elektronika.click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));

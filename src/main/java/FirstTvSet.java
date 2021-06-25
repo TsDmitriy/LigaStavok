@@ -1,4 +1,5 @@
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -23,6 +24,7 @@ public class FirstTvSet extends MainPage{
      * @param priseEstablished цена товара установленная в фильтре
      * @return FirstTvSet
      */
+    @Step("Проверяем, что цена телевизора соотвествует параметрам установленным в фильтре")
     public FirstTvSet checkPriseTvMoreOrEqual (Integer priseEstablished) {
         Integer prise = Integer.parseInt(priseTV.getText().replaceAll("[^0-9]", ""));
 //        Assert.assertTrue("Цена товара не соответствует цене заданной в фильтре:" +" " + priseEstablished,prise>=priseEstablished);
@@ -33,11 +35,15 @@ public class FirstTvSet extends MainPage{
      * Метод проверяет, что в описании товара присутствует бренд выбранный в фильтре
      * @param brends бренды выбранные в фильтре
      */
+    @Step("Проверяем, что бренд телевизора соотвествует параметрам установленным в фильтре")
     public void checkBrendTvEqual (String...brends) {
         ArrayList<String> listBrend = new ArrayList<>(Arrays.asList(brends));
         String descriptionTV = brendTV.getText();
         for (String s:listBrend) {
-            if (!descriptionTV.contains(s)) {
+            if (descriptionTV.contains(s)) {
+                break;
+            }
+            else {
                 throw new IllegalArgumentException("Бренд телевизора не соотвествует брендам заданным в фильтре:" + String.join(",", brends));
             }
         }

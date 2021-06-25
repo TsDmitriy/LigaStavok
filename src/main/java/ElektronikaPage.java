@@ -1,3 +1,4 @@
+import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
@@ -18,6 +19,7 @@ public class ElektronikaPage extends MainPage {
      * Метод осуществляет переход на страницу раздела Телевизоры
      * @return
      */
+    @Step("Переход на страницу \"Телевизоры\"")
     public TvSetPage goToTvSetPage() throws IOException {
         tVSet.click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
