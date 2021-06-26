@@ -37,6 +37,7 @@ public class TvSetPage extends BasePage {
     public void checkBrendTvEqual(String... brends) {
         ArrayList<String> listBrend = new ArrayList<>(Arrays.asList(brends));
         String descriptionTV = brendTV.getText();
+
         for (String s : listBrend) {
             if (descriptionTV.contains(s)) {
                 break;
