@@ -19,7 +19,7 @@ public class TvSetPage extends BasePage {
         PageFactory.initElements(Driver.getInstance(), this);
     }
 
-    @FindBy(xpath = "//*[@class=\"_2CEl7XpdNV\"]//*[@class=\"_10o2cPu4Fn\"]")
+    @FindBy(xpath = "//*[@class=\"_10o2cPu4Fn\"]")
     private WebElement priseTV;
 
     @FindBy(className = "x__tNeZtug")

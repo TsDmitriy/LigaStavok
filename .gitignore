@@ -1,5 +1,5 @@
-target
-log
 .allure
 .idea
 .iml
+target
+log

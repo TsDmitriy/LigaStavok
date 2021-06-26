@@ -29,15 +29,22 @@ public class Helpers {
         return Driver.getInstance().getWindowHandles();
     }
 
-    public static String getNewWindowHandles(Set<String> oldWindowsSet, Set<String> newWindowsSet) {
-        String newWindowHandle = (new WebDriverWait(Driver.getInstance(), 10))
-                .until(new ExpectedCondition<String>() {
-                    public String apply(WebDriver driver) {
-                        newWindowsSet.removeAll(oldWindowsSet);
-                        return newWindowsSet.size() > 0 ?
-                                newWindowsSet.iterator().next() : null;
-                    }
-                });
+    public static String getNewWindowHandle(Set<String> oldWindowsSet, Set<String> newWindowsSet) {
+        String newWindowHandle="";
+        try {
+              newWindowHandle = (new WebDriverWait(Driver.getInstance(), 10))
+                    .until(new ExpectedCondition<String>() {
+                        public String apply(WebDriver driver) {
+                            newWindowsSet.removeAll(oldWindowsSet);
+                            return newWindowsSet.size() > 0 ?
+                                    newWindowsSet.iterator().next() : null;
+                        }
+                    });
+
+        }
+        catch (Exception e) {
+            System.out.println("Новое  окно или вкладка не открылась");
+        }
         return newWindowHandle;
     }
 

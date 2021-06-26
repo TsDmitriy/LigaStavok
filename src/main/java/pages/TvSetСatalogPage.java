@@ -21,7 +21,8 @@ public class TvSetСatalogPage extends BasePage {
     @FindBy(xpath = "(//*[@data-zone-name=\"snippetList\"]//following::article)[1]//ancestor-or-self::img")
     private WebElement firstTV;
 
-    public By form = By.xpath("//*[@data-tid=\"67d9be0a\"]");
+    private By form = By.xpath("//*[@data-tid=\"67d9be0a\"]");
+    private String manufacturer = "//*[@class=\"NVoaOvqe58\" and text()='%s']";
 
     public TvSetСatalogPage() {
         PageFactory.initElements(Driver.getInstance(),this);
@@ -37,7 +38,7 @@ public class TvSetСatalogPage extends BasePage {
 
     @Step("Выбрать бренд телевизора")
     public TvSetСatalogPage selectBrandTvSet(String brandTvSet){
-        Helpers.checkElementPresenceAndFindIt(By.xpath("//*[@class=\"NVoaOvqe58\" and text()='" + brandTvSet + "']")).click();
+        Helpers.checkElementPresenceAndFindIt(By.xpath(String.format(manufacturer,brandTvSet))).click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
     }
@@ -49,7 +50,7 @@ public class TvSetСatalogPage extends BasePage {
         Helpers.checkElementStalenessOf(formDisable);
         firstTV.click();
         Set<String> newWindowsSet = Helpers.getWindowHandles();
-        Driver.getInstance().switchTo().window(Helpers.getNewWindowHandles(oldWindowsSet, newWindowsSet));
+        Driver.getInstance().switchTo().window(Helpers.getNewWindowHandle(oldWindowsSet, newWindowsSet));
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return new TvSetPage();
 
