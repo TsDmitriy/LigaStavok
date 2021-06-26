@@ -12,7 +12,6 @@
         <aspectj.version>1.9.5</aspectj.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <compiler.version>1.7</compiler.version>
-        <ashot.version>1.5.4</ashot.version>
         <selenium.java.version>3.141.59</selenium.java.version>
         <allure.maven>2.10.0</allure.maven>
         <allure.maven.version>2.13.6</allure.maven.version>
@@ -40,11 +39,6 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.jupiter.engine}</version>
-        </dependency>
-        <dependency>
-            <groupId>ru.yandex.qatools.ashot</groupId>
-            <artifactId>ashot</artifactId>
-            <version>${ashot.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
