@@ -12,11 +12,7 @@ public class BasePage {
     public BasePage() {
         PageFactory.initElements(Driver.getInstance(),this);
     }
-    /**
-     * Метод осуществляет переход на главную страницу приложения
-     *
-     * @return новую страницу Pages.MainPage
-     */
+
     @Step("Открыть главную страницу")
     public MainPage goToMainPage(){
         Driver.getInstance().get(url);

@@ -25,12 +25,6 @@ public class TvSetPage extends BasePage {
     @FindBy(className = "x__tNeZtug")
     private WebElement brendTV;
 
-    /**
-     * Метод получает цену телевизора и сравнивает ее с ценой установленной в фильтре
-     *
-     * @param priseEstablished цена товара установленная в фильтре
-     * @return Pages.FirstTvSet
-     */
     @Step("Цена телевизора соотвествует параметрам установленным в фильтре")
     public TvSetPage checkPriseTvMoreOrEqual(int priseEstablished) {
         Integer prise = Integer.parseInt(priseTV.getText().replaceAll("[^0-9]", ""));
@@ -39,11 +33,6 @@ public class TvSetPage extends BasePage {
         return this;
     }
 
-    /**
-     * Метод проверяет, что в описании товара присутствует бренд выбранный в фильтре
-     *
-     * @param brends бренды выбранные в фильтре
-     */
     @Step("Бренд телевизора соотвествует параметрам установленным в фильтре")
     public void checkBrendTvEqual(String... brends) {
         ArrayList<String> listBrend = new ArrayList<>(Arrays.asList(brends));

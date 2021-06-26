@@ -18,11 +18,6 @@ public class ElectronicsСatalogPage extends BasePage {
     @FindBy(xpath = "//*[@class=\"_1Y6X2G3jjK\"]//*[text()='Телевизоры']")
     private WebElement tvSet;
 
-    /**
-     * Метод осуществляет переход на страницу раздела Телевизоры
-     *
-     * @return
-     */
     @Step("Выбрать подкатегорию \"Телевизоры\"")
     public TvSetСatalogPage goToTvSetPage() {
         tvSet.click();

@@ -12,12 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.Set;
 
 public class Helpers {
-    /**
-     * Метод проверет виден ли элемент в дом, если виден возвращает элемент
-     *
-     * @param by путь до элемента в DOM
-     * @return найденный WebElement
-     */
     public static WebElement checkElementPresenceAndFindIt(By by)  {
         new WebDriverWait(Driver.getInstance(), 15)
                 .withMessage("Элемент" + by + "не виден в DOM")
@@ -25,33 +19,16 @@ public class Helpers {
         return Driver.getInstance().findElement(by);
     }
 
-    /**
-     * Метод ожидает, что элемента больше нет.
-     *
-     * @param webElement веб элемент
-     */
     public static void checkElementStalenessOf(WebElement webElement) {
         new WebDriverWait(Driver.getInstance(), 15)
                 .withMessage("Элемент" + webElement + " присутствует в DOM")
                 .until(ExpectedConditions.stalenessOf(webElement));
     }
 
-    /**
-     * Метод получает дескриптор страницы
-     *
-     * @return Set<String>
-     */
     public static Set<String> getWindowHandles() {
         return Driver.getInstance().getWindowHandles();
     }
 
-    /**
-     * Метод возвращает дискриптор новой открытой страницы
-     *
-     * @param oldWindowsSet множество сожержащие дискриптор текущей страницы
-     * @param newWindowsSet множество сожержащее дискрипторы октрытых страниц
-     * @return дискриптор новой открытой страницы
-     */
     public static String getNewWindowHandles(Set<String> oldWindowsSet, Set<String> newWindowsSet) {
         String newWindowHandle = (new WebDriverWait(Driver.getInstance(), 10))
                 .until(new ExpectedCondition<String>() {

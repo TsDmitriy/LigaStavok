@@ -17,10 +17,6 @@ public class  MainPage extends BasePage{
         PageFactory.initElements(Driver.getInstance(),this);
     }
 
-    /**
-     * Метод осуществляет переход на страницу раздела Электроника
-     * @return Pages.ElectronicsPage
-     */
     @Step("Выбрать категорию \"Электроника\"")
     public ElectronicsСatalogPage goToElectronicsPage(){
         electronics.click();
