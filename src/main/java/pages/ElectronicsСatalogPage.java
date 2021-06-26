@@ -1,6 +1,6 @@
-package Pages;
+package pages;
 
-import Driver.Driver;
+import driver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -9,27 +9,25 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Helpers;
 
-import java.io.IOException;
+public class ElectronicsСatalogPage extends BasePage {
 
-public class ElektronikaPage extends MainPage {
-
-    public ElektronikaPage() {
+    public ElectronicsСatalogPage() {
         PageFactory.initElements(Driver.getInstance(), this);
     }
 
     @FindBy(xpath = "//*[@class=\"_1Y6X2G3jjK\"]//*[text()='Телевизоры']")
-    private WebElement tVSet;
+    private WebElement tvSet;
 
     /**
      * Метод осуществляет переход на страницу раздела Телевизоры
      *
      * @return
      */
-    @Step("Переход на страницу \"Телевизоры\"")
-    public TvSetPage goToTvSetPage() throws IOException {
-        tVSet.click();
+    @Step("Выбрать подкатегорию \"Телевизоры\"")
+    public TvSetСatalogPage goToTvSetPage() {
+        tvSet.click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
-        return new TvSetPage();
+        return new TvSetСatalogPage();
     }
 
 }

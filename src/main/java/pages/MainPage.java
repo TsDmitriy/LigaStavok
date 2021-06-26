@@ -1,5 +1,5 @@
-package Pages;
-import Driver.Driver;
+package pages;
+import driver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -8,12 +8,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.Helpers;
 
-import java.io.IOException;
-
-public class  MainPage {
+public class  MainPage extends BasePage{
 
     @FindBy(xpath = "//*[@href=\"/catalog--elektronika/54440\"]")
-    private WebElement elektronika;
+    private WebElement electronics;
 
     public MainPage() {
         PageFactory.initElements(Driver.getInstance(),this);
@@ -21,12 +19,12 @@ public class  MainPage {
 
     /**
      * Метод осуществляет переход на страницу раздела Электроника
-     * @return Pages.ElektronikaPage
+     * @return Pages.ElectronicsPage
      */
-    @Step("Переход на страницу \"Электроника\"")
-    public ElektronikaPage goToElektronikaPage() throws IOException {
-        elektronika.click();
+    @Step("Выбрать категорию \"Электроника\"")
+    public ElectronicsСatalogPage goToElectronicsPage(){
+        electronics.click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
-        return new ElektronikaPage();
+        return new ElectronicsСatalogPage();
     }
 }

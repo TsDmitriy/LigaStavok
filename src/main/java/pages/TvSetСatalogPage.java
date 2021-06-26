@@ -1,18 +1,17 @@
-package Pages;
+package pages;
 
-import Driver.Driver;
+import driver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import utils.Helpers;
-
-import java.io.IOException;
 import java.util.Set;
 
-public class TvSetPage extends MainPage {
+public class TvSetСatalogPage extends BasePage {
     @FindBy(id = "glpricefrom")
     private WebElement priceFrom;
 
@@ -24,33 +23,35 @@ public class TvSetPage extends MainPage {
 
     public By form = By.xpath("//*[@data-tid=\"67d9be0a\"]");
 
-    public TvSetPage() throws IOException {
+    public TvSetСatalogPage() {
+        PageFactory.initElements(Driver.getInstance(),this);
     }
 
-    @Step("Пользователь вводит сумму в поле Цена, ₽ от")
-    public TvSetPage selectMinPrise(String priseMin){
-        priceFrom.sendKeys(priseMin);
+
+    @Step("Ввести сумму в поле Цена, ₽ от")
+    public TvSetСatalogPage selectMinPrise(String priceMin){
+        priceFrom.sendKeys(priceMin);
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
     }
 
-    @Step("Пользователь выбирает бренд телевизора")
-    public TvSetPage selectBrendTVset(String brendTVset) throws IOException {
-        Helpers.presenceOfElementLocatedAmdFindElement(By.xpath("//*[@class=\"NVoaOvqe58\" and text()='" + brendTVset + "']")).click();
+    @Step("Выбрать бренд телевизора")
+    public TvSetСatalogPage selectBrandTvSet(String brandTvSet){
+        Helpers.checkElementPresenceAndFindIt(By.xpath("//*[@class=\"NVoaOvqe58\" and text()='" + brandTvSet + "']")).click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
     }
 
-    @Step("Пользователь выбирает первый найденный телевизор")
-    public FirstTvSet choiseFirstTvSet() throws IOException {
+    @Step("Переключиться на открытую вкладку товара")
+    public TvSetPage chooseFirstTvSet(){
         Set<String> oldWindowsSet = Helpers.getWindowHandles();
-        WebElement formDisaible = Helpers.presenceOfElementLocatedAmdFindElement(form);
-        Helpers.stalenessOf(formDisaible);
+        WebElement formDisable = Helpers.checkElementPresenceAndFindIt(form);
+        Helpers.checkElementStalenessOf(formDisable);
         firstTV.click();
         Set<String> newWindowsSet = Helpers.getWindowHandles();
         Driver.getInstance().switchTo().window(Helpers.getNewWindowHandles(oldWindowsSet, newWindowsSet));
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
-        return new FirstTvSet();
+        return new TvSetPage();
 
     }
 
