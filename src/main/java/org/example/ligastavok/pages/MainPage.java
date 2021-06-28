@@ -13,14 +13,10 @@ public class  MainPage extends BasePage{
     @FindBy(xpath = "//*[@href=\"/catalog--elektronika/54440\"]")
     private WebElement electronics;
 
-    public MainPage() {
-        PageFactory.initElements(Driver.getInstance(),this);
-    }
-
     @Step("Выбрать категорию \"Электроника\"")
-    public ElectronicsСatalogPage goToElectronicsPage(){
+    public ElectronicsCatalogPage goToElectronicsPage(){
         electronics.click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
-        return new ElectronicsСatalogPage();
+        return new ElectronicsCatalogPage();
     }
 }

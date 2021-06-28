@@ -7,14 +7,13 @@ public class CheckFilterPriceAndBrandTest extends BaseTest {
 
     @Test
     public void test() {
-        new MainPage()
-                .goToElectronicsPage()
+        mainPage.goToElectronicsPage()
                 .goToTvSetPage()
-                .selectMinPriсe("20000")
+                .selectMinPrice("20000")
                 .selectBrandTvSet("LG")
                 .selectBrandTvSet("Samsung")
                 .chooseFirstTvSet()
-                .checkPriсeTvMoreOrEqual(20000)
+                .checkPriceTvMoreOrEqual(20000)
                 .checkBrandTvEqual("LG", "Samsung");
     }
 }

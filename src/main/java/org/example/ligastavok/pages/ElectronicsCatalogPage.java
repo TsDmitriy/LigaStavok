@@ -6,23 +6,18 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.example.ligastavok.utils.Helpers;
 
-public class ElectronicsСatalogPage extends BasePage {
-
-    public ElectronicsСatalogPage() {
-        PageFactory.initElements(Driver.getInstance(), this);
-    }
+public class ElectronicsCatalogPage extends BasePage {
 
     @FindBy(xpath = "//*[@class=\"_1Y6X2G3jjK\"]//*[text()='Телевизоры']")
     private WebElement tvSet;
 
     @Step("Выбрать подкатегорию \"Телевизоры\"")
-    public TvSetСatalogPage goToTvSetPage() {
+    public TvPage goToTvSetPage() {
         tvSet.click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
-        return new TvSetСatalogPage();
+        return new TvPage();
     }
 
 }

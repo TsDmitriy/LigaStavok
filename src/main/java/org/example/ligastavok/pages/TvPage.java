@@ -7,11 +7,10 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.example.ligastavok.utils.Helpers;
 import java.util.Set;
 
-public class TvSetСatalogPage extends BasePage {
+public class TvPage extends BasePage {
     @FindBy(id = "glpricefrom")
     private WebElement priceFrom;
 
@@ -24,20 +23,15 @@ public class TvSetСatalogPage extends BasePage {
     private By form = By.xpath("//*[@data-tid=\"67d9be0a\"]");
     private String manufacturer = "//*[@class=\"NVoaOvqe58\" and text()='%s']";
 
-    public TvSetСatalogPage() {
-        PageFactory.initElements(Driver.getInstance(),this);
-    }
-
-
     @Step("Ввести сумму в поле Цена, ₽ от")
-    public TvSetСatalogPage selectMinPriсe(String priceMin){
+    public TvPage selectMinPrice(String priceMin){
         priceFrom.sendKeys(priceMin);
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
     }
 
     @Step("Выбрать бренд телевизора")
-    public TvSetСatalogPage selectBrandTvSet(String brandTvSet){
+    public TvPage selectBrandTvSet(String brandTvSet){
         Helpers.checkElementPresenceAndFindIt(By.xpath(String.format(manufacturer,brandTvSet))).click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
@@ -47,7 +41,7 @@ public class TvSetСatalogPage extends BasePage {
     public TvSetPage chooseFirstTvSet(){
         Set<String> oldWindowsSet = Helpers.getWindowHandles();
         WebElement formDisable = Helpers.checkElementPresenceAndFindIt(form);
-        Helpers.checkElementStalenessOf(formDisable);
+        Helpers.checkElementStaleness(formDisable);
         firstTV.click();
         Set<String> newWindowsSet = Helpers.getWindowHandles();
         Driver.getInstance().switchTo().window(Helpers.getNewWindowHandle(oldWindowsSet, newWindowsSet));
