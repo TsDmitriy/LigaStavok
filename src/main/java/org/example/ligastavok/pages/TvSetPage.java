@@ -1,6 +1,6 @@
-package pages;
+package org.example.ligastavok.pages;
 
-import driver.Driver;
+import org.example.ligastavok.driver.Driver;
 import io.qameta.allure.Step;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.OutputType;
@@ -8,7 +8,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.Helpers;
+import org.example.ligastavok.utils.Helpers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +37,6 @@ public class TvSetPage extends BasePage {
     public void checkBrendTvEqual(String... brends) {
         ArrayList<String> listBrend = new ArrayList<>(Arrays.asList(brends));
         String descriptionTV = brendTV.getText();
-
         for (String s : listBrend) {
             if (descriptionTV.contains(s)) {
                 break;

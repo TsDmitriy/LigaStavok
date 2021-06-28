@@ -1,13 +1,13 @@
-package pages;
+package org.example.ligastavok.pages;
 
-import driver.Driver;
+import org.example.ligastavok.driver.Driver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import utils.Helpers;
+import org.example.ligastavok.utils.Helpers;
 
 public class ElectronicsСatalogPage extends BasePage {
 

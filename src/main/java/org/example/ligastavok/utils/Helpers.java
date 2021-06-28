@@ -1,6 +1,6 @@
-package utils;
+package org.example.ligastavok.utils;
 
-import driver.Driver;
+import org.example.ligastavok.driver.Driver;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

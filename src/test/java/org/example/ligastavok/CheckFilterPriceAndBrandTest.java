@@ -1,5 +1,7 @@
+package org.example.ligastavok;
+
 import org.junit.jupiter.api.Test;
-import pages.MainPage;
+import org.example.ligastavok.pages.MainPage;
 
 public class CheckFilterPriceAndBrandTest extends BaseTest {
 
