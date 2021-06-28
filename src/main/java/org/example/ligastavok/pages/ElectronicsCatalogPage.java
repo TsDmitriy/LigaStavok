@@ -14,10 +14,10 @@ public class ElectronicsCatalogPage extends BasePage {
     private WebElement tvSet;
 
     @Step("Выбрать подкатегорию \"Телевизоры\"")
-    public TvPage goToTvSetPage() {
+    public TvSetPage goToTvSetPage() {
         tvSet.click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
-        return new TvPage();
+        return new TvSetPage();
     }
 
 }

@@ -2,38 +2,52 @@ package org.example.ligastavok.pages;
 
 import org.example.ligastavok.driver.Driver;
 import io.qameta.allure.Step;
-import org.junit.jupiter.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.example.ligastavok.utils.Helpers;
-
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Set;
 
 public class TvSetPage extends BasePage {
+    @FindBy(id = "glpricefrom")
+    private WebElement priceFrom;
 
-    @FindBy(xpath = "//*[@class=\"_10o2cPu4Fn\"]")
-    private WebElement priceTV;
+    @FindBy(className = "_38V6fgYMij")
+    private WebElement formTV;
 
-    @FindBy(className = "x__tNeZtug")
-    private WebElement brandTV;
+    @FindBy(xpath = "(//*[@data-zone-name=\"snippetList\"]//following::article)[1]//ancestor-or-self::img")
+    private WebElement firstTV;
 
-    @Step("Цена телевизора соотвествует параметрам установленным в фильтре")
-    public TvSetPage checkPriceTvMoreOrEqual(int priceEstablished) {
-        int price = Integer.parseInt(priceTV.getText().replaceAll("[^0-9]", ""));
-        Assertions.assertTrue(price >= priceEstablished);
+    private By form = By.xpath("//*[@data-tid=\"67d9be0a\"]");
+    private String manufacturer = "//*[@class=\"NVoaOvqe58\" and text()='%s']";
+
+    @Step("Ввести сумму в поле Цена, ₽ от")
+    public TvSetPage selectMinPrice(String priceMin){
+        priceFrom.sendKeys(priceMin);
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
     }
 
-    @Step("Бренд телевизора соотвествует параметрам установленным в фильтре")
-    public void checkBrandTvEqual(String... brands) {
-        ArrayList<String> listBrand = new ArrayList<>(Arrays.asList(brands));
-        String descriptionTV = brandTV.getText();
-        Assertions.assertTrue(listBrand.stream().anyMatch(descriptionTV::contains),"Бренд телевизора не соотвествует брендам заданным в фильтре:" + String.join(",", brands));
+    @Step("Выбрать бренд телевизора")
+    public TvSetPage selectBrandTvSet(String brandTvSet){
+        Helpers.checkElementPresenceAndFindIt(By.xpath(String.format(manufacturer,brandTvSet))).click();
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
+        return this;
+    }
+
+    @Step("Переключиться на открытую вкладку товара")
+    public TvPage chooseFirstTvSet(){
+        Set<String> oldWindowsSet = Helpers.getWindowHandles();
+        WebElement formDisable = Helpers.checkElementPresenceAndFindIt(form);
+        Helpers.checkElementStaleness(formDisable);
+        firstTV.click();
+        Set<String> newWindowsSet = Helpers.getWindowHandles();
+        Driver.getInstance().switchTo().window(Helpers.getNewWindowHandle(oldWindowsSet, newWindowsSet));
+        Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
+        return new TvPage();
+
     }
 
 }
