@@ -30,7 +30,7 @@ public class TvSetСatalogPage extends BasePage {
 
 
     @Step("Ввести сумму в поле Цена, ₽ от")
-    public TvSetСatalogPage selectMinPrise(String priceMin){
+    public TvSetСatalogPage selectMinPriсe(String priceMin){
         priceFrom.sendKeys(priceMin);
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;

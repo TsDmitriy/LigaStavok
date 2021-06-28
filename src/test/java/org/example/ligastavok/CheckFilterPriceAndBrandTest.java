@@ -10,11 +10,11 @@ public class CheckFilterPriceAndBrandTest extends BaseTest {
         new MainPage()
                 .goToElectronicsPage()
                 .goToTvSetPage()
-                .selectMinPrise("20000")
+                .selectMinPriсe("20000")
                 .selectBrandTvSet("LG")
                 .selectBrandTvSet("Samsung")
                 .chooseFirstTvSet()
-                .checkPriseTvMoreOrEqual(20000)
-                .checkBrendTvEqual("LG", "Samsung");
+                .checkPriсeTvMoreOrEqual(20000)
+                .checkBrandTvEqual("LG", "Samsung");
     }
 }

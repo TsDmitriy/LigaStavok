@@ -20,30 +20,25 @@ public class TvSetPage extends BasePage {
     }
 
     @FindBy(xpath = "//*[@class=\"_10o2cPu4Fn\"]")
-    private WebElement priseTV;
+    private WebElement priсeTV;
 
     @FindBy(className = "x__tNeZtug")
-    private WebElement brendTV;
+    private WebElement brandTV;
 
     @Step("Цена телевизора соотвествует параметрам установленным в фильтре")
-    public TvSetPage checkPriseTvMoreOrEqual(int priseEstablished) {
-        Integer prise = Integer.parseInt(priseTV.getText().replaceAll("[^0-9]", ""));
-        Assertions.assertTrue(prise >= priseEstablished);
+    public TvSetPage checkPriсeTvMoreOrEqual(int priceEstablished) {
+        int price = Integer.parseInt(priсeTV.getText().replaceAll("[^0-9]", ""));
+        Assertions.assertTrue(price >= priceEstablished);
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
         return this;
     }
 
     @Step("Бренд телевизора соотвествует параметрам установленным в фильтре")
-    public void checkBrendTvEqual(String... brends) {
-        ArrayList<String> listBrend = new ArrayList<>(Arrays.asList(brends));
-        String descriptionTV = brendTV.getText();
-        for (String s : listBrend) {
-            if (descriptionTV.contains(s)) {
-                break;
-            } else {
-                Assertions.fail("Бренд телевизора не соотвествует брендам заданным в фильтре:" + String.join(",", brends));
-            }
-        }
+    public void checkBrandTvEqual(String... brands) {
+        ArrayList<String> listBrand = new ArrayList<>(Arrays.asList(brands));
+        String descriptionTV = brandTV.getText();
+        Assertions.assertTrue(listBrand.stream().anyMatch(descriptionTV::contains),"Бренд телевизора не соотвествует брендам заданным в фильтре:" + String.join(",", brands));
         Helpers.saveScreenshot(((TakesScreenshot) Driver.getInstance()).getScreenshotAs(OutputType.BYTES));
     }
+
 }
