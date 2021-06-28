@@ -12,11 +12,6 @@ public class Driver {
 
     }
 
-    /**
-     * Метод проверяет есть ли instance WebDriver, если нет, то создает новый
-     *
-     * @return instance
-     */
     public static synchronized WebDriver getInstance() {
         if (instance == null) {
 
@@ -27,9 +22,6 @@ public class Driver {
         return instance;
     }
 
-    /**
-     * Метод который завершает работу браузера и сервисов
-     */
     public static void stopDriver() {
         instance.quit();
         instance = null;
